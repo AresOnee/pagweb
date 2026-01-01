@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Confirmación de Cotización - Fibrarce</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f66bd",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white flex flex-col min-h-screen overflow-x-hidden">
+<div class="w-full bg-white dark:bg-[#1A2633] border-b border-[#f0f2f4] dark:border-[#2a3847]">
+<header class="layout-content-container flex items-center justify-between whitespace-nowrap px-4 lg:px-10 py-4 max-w-[1200px] mx-auto">
+<div class="flex items-center gap-4 text-[#111418] dark:text-white">
+<div class="size-8 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl">water_drop</span>
+</div>
+<h2 class="text-[#111418] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">Fibrarce</h2>
+</div>
+<div class="hidden lg:flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-[#111418] dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors" href="#">Inicio</a>
+<a class="text-[#111418] dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors" href="#">Catálogo de Productos</a>
+<a class="text-[#111418] dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors" href="#">Nosotros</a>
+<a class="text-[#111418] dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors" href="#">Contacto</a>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary hover:bg-primary/90 transition-colors text-white text-sm font-bold tracking-[0.015em]">
+<span class="truncate">Cotizar</span>
+</button>
+</div>
+<button class="lg:hidden text-[#111418] dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+</div>
+<main class="flex-grow flex flex-col items-center justify-center py-12 px-4 sm:px-6">
+<div class="w-full max-w-[800px] flex flex-col items-center gap-8">
+<div class="rounded-full bg-green-50 dark:bg-green-900/20 p-6 mb-2">
+<span class="material-symbols-outlined text-green-600 dark:text-green-400 text-6xl">check_circle</span>
+</div>
+<div class="text-center space-y-4 max-w-[600px]">
+<h1 class="text-[#111418] dark:text-white tracking-tight text-3xl md:text-4xl font-bold leading-tight">
+                    ¡Gracias! Hemos recibido tu solicitud.
+                </h1>
+<p class="text-gray-600 dark:text-gray-300 text-lg font-normal leading-relaxed">
+                    Tu cotización para productos Fibrarce está siendo procesada. Uno de nuestros expertos en fibra de vidrio revisará tus requerimientos y se pondrá en contacto contigo a la brevedad.
+                </p>
+</div>
+<div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[600px] mt-4">
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-[#dbe0e6] dark:border-[#2a3847] bg-white dark:bg-[#1A2633] shadow-sm">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-xl">receipt_long</span>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-medium uppercase tracking-wider">Nº de Referencia</p>
+</div>
+<p class="text-[#111418] dark:text-white text-2xl font-bold leading-tight">#COT-8921</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-[#dbe0e6] dark:border-[#2a3847] bg-white dark:bg-[#1A2633] shadow-sm">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-xl">schedule</span>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-medium uppercase tracking-wider">Tiempo de respuesta</p>
+</div>
+<p class="text-[#111418] dark:text-white text-2xl font-bold leading-tight">24-48 horas</p>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 w-full justify-center mt-6">
+<button class="flex items-center justify-center h-12 px-8 rounded-lg border border-[#dbe0e6] dark:border-[#2a3847] bg-white dark:bg-[#1A2633] text-[#111418] dark:text-white font-bold hover:bg-gray-50 dark:hover:bg-[#23303e] transition-colors w-full sm:w-auto min-w-[180px]">
+<span class="material-symbols-outlined mr-2 text-sm">home</span>
+                    Volver al Inicio
+                </button>
+<button class="flex items-center justify-center h-12 px-8 rounded-lg bg-primary text-white font-bold hover:bg-primary/90 transition-colors w-full sm:w-auto min-w-[180px] shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined mr-2 text-sm">grid_view</span>
+                    Ver más productos
+                </button>
+</div>
+<p class="text-gray-500 dark:text-gray-400 text-sm text-center mt-4">
+                ¿Necesitas atención urgente? Llámanos al <a class="text-primary font-medium hover:underline" href="#">+56 9 1234 5678</a>
+</p>
+<div class="w-full mt-8 max-w-[800px] overflow-hidden rounded-2xl shadow-sm border border-[#f0f2f4] dark:border-[#2a3847]">
+<div class="relative h-48 sm:h-64 w-full bg-gray-100 dark:bg-[#1A2633]">
+<div class="absolute inset-0 bg-cover bg-center opacity-90 hover:scale-105 transition-transform duration-700 ease-out" data-alt="Modern blue swimming pool made of fiberglass in a backyard garden" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAQCcHVPH8A1Hdd1QzMNEDyKp6VU22xgkZzOons97ffPhrSn2XRGdi59qul8n2yR-3LY4QXLMeCLnwNsXy6gXGxF9YfSnophi-T6aiaf9bpCQGuKMqL-HiXZQjq06m560eDwjAq2e_yeMbQQ086v3BHp3ydVB4kVAPXhhEEz0HLSUZxWuGK8CTfbSuNFKkB7-u7UpBgIxMcR9z_VFMQQ9OiWh7Px40CDVOzOiO9oWWd_JHRL1F55DL0aHgNswD4XO4x_cvYtarse0o");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-6">
+<p class="text-white font-medium text-lg drop-shadow-md">Explora nuestra línea de piscinas premium</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-white dark:bg-[#1A2633] border-t border-[#f0f2f4] dark:border-[#2a3847] py-8">
+<div class="layout-content-container max-w-[1200px] mx-auto px-4 lg:px-10 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-2 text-[#111418] dark:text-white">
+<span class="material-symbols-outlined text-primary">water_drop</span>
+<span class="font-bold">Fibrarce</span>
+</div>
+<p class="text-gray-500 dark:text-gray-400 text-sm">
+                © 2023 Fibrarce. Todos los derechos reservados.
+            </p>
+<div class="flex gap-4">
+<a class="text-gray-400 hover:text-primary transition-colors" href="#">
+<span class="sr-only">Facebook</span>
+<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg>
+</a>
+<a class="text-gray-400 hover:text-primary transition-colors" href="#">
+<span class="sr-only">Instagram</span>
+<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.46 2.465C6.096 2.218 6.823 2.049 7.887 2c1.024-.047 1.379-.06 3.808-.06zm1.072 2.126H8.621c-2.71 0-3.328.015-4.086.05-.756.035-1.196.16-1.472.268-.363.14-.623.308-.897.582-.274.274-.442.534-.582.897-.108.276-.233.716-.268 1.472-.035.758-.05 1.376-.05 4.086v1.897c0 2.71.015 3.328.05 4.086.035.756.16 1.196.268 1.472.14.363.308.623.582.897.274.274.534.442.897.582.276.108.716.233 1.472.268.758.035 1.376.05 4.086.05h1.897c2.71 0 3.328-.015 4.086-.05.756-.035 1.196-.16 1.472-.268.363-.14.623-.308.897-.582.274-.274.442-.534.582-.897.108-.276.233-.716.268-1.472.035-.758.05-1.376.05-4.086v-1.897c0-2.71-.015-3.328-.05-4.086-.035-.756-.16-1.196-.268-1.472-.14-.363-.308-.623-.582-.897-.274-.274-.534-.442-.897-.582-.276-.108-.716-.233-1.472-.268-.758-.035-1.376-.05-4.086-.05zm-2.072 4.07a5.187 5.187 0 11-5.187 5.187 5.187 5.187 0 015.187-5.187zm0 2.126a3.061 3.061 0 103.061 3.061 3.061 3.061 0 00-3.061-3.061zm5.889-5.343a1.417 1.417 0 11-1.417 1.417 1.417 1.417 0 011.417-1.417z"></path></svg>
+</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple dark mode toggle logic based on system preference (optional enhancement)
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</body></html>

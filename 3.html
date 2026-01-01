@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Solicitud de Cotización - Fibrarce</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f66bd",
+                        "primary-dark": "#0b4d91",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2632",
+                        "text-main": "#111418",
+                        "text-secondary": "#617589",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-white transition-colors duration-200">
+<header class="sticky top-0 z-50 bg-white dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 shadow-sm">
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 text-primary">
+<svg class="w-full h-full" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">Fibrarce</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition-colors" href="#">Inicio</a>
+<a class="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition-colors" href="#">Catálogo de Productos</a>
+<a class="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition-colors" href="#">Nosotros</a>
+<a class="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition-colors" href="#">Contacto</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="relative p-2 text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-white">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="absolute top-1 right-0 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">3</span>
+</button>
+<button class="hidden sm:flex bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-lg text-sm font-bold transition-colors shadow-md hover:shadow-lg">
+                        Cotizar
+                    </button>
+<button class="md:hidden p-2 text-gray-600 dark:text-gray-300">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="min-h-screen py-8 lg:py-12 px-4 sm:px-6 lg:px-8">
+<div class="max-w-[1200px] mx-auto">
+<div class="mb-6 flex items-center text-sm text-text-secondary dark:text-gray-400">
+<a class="hover:text-primary transition-colors" href="#">Inicio</a>
+<span class="mx-2">/</span>
+<a class="hover:text-primary transition-colors" href="#">Catálogo de Productos</a>
+<span class="mx-2">/</span>
+<span class="font-medium text-text-main dark:text-white">Solicitud de Cotización</span>
+</div>
+<div class="mb-10">
+<h1 class="text-3xl md:text-4xl font-black tracking-tight text-text-main dark:text-white mb-3">Solicitud de Cotización</h1>
+<p class="text-lg text-text-secondary dark:text-gray-400 max-w-2xl">Finaliza los detalles para recibir tu propuesta personalizada. Nuestros expertos revisarán tu solicitud y te contactarán en menos de 24 horas.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="lg:col-span-7 flex flex-col gap-6">
+<div class="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-gray-700">
+<h2 class="text-xl font-bold text-text-main dark:text-white">Resumen de Productos (3)</h2>
+<a class="text-sm font-medium text-primary hover:underline flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]">add</span> Agregar más productos
+                        </a>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row gap-5 items-start sm:items-center">
+<div class="w-full sm:w-24 h-24 shrink-0 rounded-lg bg-gray-100 dark:bg-gray-800 bg-cover bg-center" data-alt="Estanque horizontal de fibra de vidrio blanco" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuACkhq7u2mqYmEg9_NbYryPSdZpOJREI5lZmWH6ckeT2rrVA3sU5hfZnxibyJ7r8q9AEz-r2Z5IVDH9oO8neugMmvd9efHlM3c5CWh_J6vnGba3tvUGa8J8YLHgvN7qrjFgRvELZNi6QxqKG_6mL_9-Hwe4m9i0SO5rRmg_P1lwKwRVkBK1h3gVkavyEuEykg4UH2GzaWswAIP6o0wF8IVbTlee5D2gEMpb8ZWoMgz3jS8iN0WbJBMkSvlugEh5ip9QmcNkPM6SsgQ');"></div>
+<div class="flex-1 min-w-0">
+<h3 class="text-lg font-bold text-text-main dark:text-white truncate">Estanque Horizontal 5.000L</h3>
+<p class="text-sm text-text-secondary dark:text-gray-400 mt-1">Uso Industrial • Fibra Reforzada</p>
+<p class="text-sm text-text-secondary dark:text-gray-400">Dim: 2.5m x 1.8m</p>
+</div>
+<div class="flex items-center justify-between w-full sm:w-auto gap-6 mt-2 sm:mt-0">
+<div class="flex items-center rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary transition-colors hover:bg-gray-200 dark:hover:bg-gray-700 rounded-l-lg">-</button>
+<input class="w-10 text-center bg-transparent border-none text-sm font-medium text-text-main dark:text-white focus:ring-0 p-0" readonly="" type="text" value="1"/>
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary transition-colors hover:bg-gray-200 dark:hover:bg-gray-700 rounded-r-lg">+</button>
+</div>
+<button class="text-gray-400 hover:text-red-500 transition-colors p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/20" title="Eliminar producto">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row gap-5 items-start sm:items-center">
+<div class="w-full sm:w-24 h-24 shrink-0 rounded-lg bg-gray-100 dark:bg-gray-800 bg-cover bg-center" data-alt="Piscina rectangular azul con agua cristalina" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA5LPOMhGLW0Oa6RMOIccsPSzXWlvk6aOPInuWtpgrGDnA0b-tpOFAEHm6CwUnf7OYZp-S0jXahgYRKMixBfLaF_lPo4kLdkA7BsCZXYoTKnjo35lFV_06ecofFWhpNe_cSbqT81i1RkQsHAmeKDJBjJ2yLtkz4gI_zHaGo4hp82xg5eFtwFxeT_UXiK9RsyQaFOd9bCxI9vl1tNqZWNMiIghfxSpbYb1h99C_4VgOyCDcYJbrEek7dZOwU71_Ud0o-5VcWXf7yVEM');"></div>
+<div class="flex-1 min-w-0">
+<h3 class="text-lg font-bold text-text-main dark:text-white truncate">Piscina Rectangular Premium</h3>
+<p class="text-sm text-text-secondary dark:text-gray-400 mt-1">Color Azul Cobalto • Kit Instalación</p>
+<p class="text-sm text-text-secondary dark:text-gray-400">Dim: 6.0m x 3.0m x 1.4m</p>
+</div>
+<div class="flex items-center justify-between w-full sm:w-auto gap-6 mt-2 sm:mt-0">
+<div class="flex items-center rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary transition-colors hover:bg-gray-200 dark:hover:bg-gray-700 rounded-l-lg">-</button>
+<input class="w-10 text-center bg-transparent border-none text-sm font-medium text-text-main dark:text-white focus:ring-0 p-0" readonly="" type="text" value="1"/>
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary transition-colors hover:bg-gray-200 dark:hover:bg-gray-700 rounded-r-lg">+</button>
+</div>
+<button class="text-gray-400 hover:text-red-500 transition-colors p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/20" title="Eliminar producto">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row gap-5 items-start sm:items-center">
+<div class="w-full sm:w-24 h-24 shrink-0 rounded-lg bg-gray-100 dark:bg-gray-800 bg-cover bg-center" data-alt="Fosa séptica industrial gris oscuro" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD3TNQ3emtXRj94trDspG4m8n6g_OupJmF2ft9l-rEFp5mFeS7TYf5kqr89Pp2hJj-Bhh6oQ1aMYLgoJ8oLkTl3Fda6eKAdoj-HhP2R_TBDzRzVYcVItLDp7nOA9MzdlQkpPMELhpjVyq1dP2OOilC4W_i9p4LWi3B_ZPumUeUaJaysbcRCx6Tz4ARqDKKkqFAd34lyKpfcT2xXcE8f9QHzlNG8m4MJIzNzJezUL99dLC8QQK6-fCWe9Oa8Mys6obMqFpJOmnIFPlU');"></div>
+<div class="flex-1 min-w-0">
+<h3 class="text-lg font-bold text-text-main dark:text-white truncate">Fosa Séptica 2.500L</h3>
+<p class="text-sm text-text-secondary dark:text-gray-400 mt-1">Norma ISO • Tratamiento Aguas</p>
+<p class="text-sm text-text-secondary dark:text-gray-400">Dim: 1.8m altura</p>
+</div>
+<div class="flex items-center justify-between w-full sm:w-auto gap-6 mt-2 sm:mt-0">
+<div class="flex items-center rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary transition-colors hover:bg-gray-200 dark:hover:bg-gray-700 rounded-l-lg">-</button>
+<input class="w-10 text-center bg-transparent border-none text-sm font-medium text-text-main dark:text-white focus:ring-0 p-0" readonly="" type="text" value="2"/>
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary transition-colors hover:bg-gray-200 dark:hover:bg-gray-700 rounded-r-lg">+</button>
+</div>
+<button class="text-gray-400 hover:text-red-500 transition-colors p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/20" title="Eliminar producto">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="sticky top-24 bg-white dark:bg-surface-dark rounded-xl shadow-lg border border-gray-100 dark:border-gray-800 p-6 md:p-8">
+<div class="flex items-center gap-3 mb-6">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<h2 class="text-xl font-bold text-text-main dark:text-white leading-tight">Datos de Contacto</h2>
+<p class="text-xs text-text-secondary dark:text-gray-400">Información para enviarte la cotización.</p>
+</div>
+</div>
+<form class="space-y-5">
+<div class="grid grid-cols-1 gap-5">
+<div>
+<label class="block text-sm font-medium text-text-main dark:text-gray-300 mb-1.5" for="name">Nombre Completo</label>
+<input class="block w-full rounded-lg border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 text-text-main dark:text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5 px-3" id="name" placeholder="Ej. Juan Pérez" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-main dark:text-gray-300 mb-1.5" for="company">Empresa <span class="text-gray-400 font-normal">(Opcional)</span></label>
+<input class="block w-full rounded-lg border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 text-text-main dark:text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5 px-3" id="company" placeholder="Ej. Constructora Ltda." type="text"/>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+<div>
+<label class="block text-sm font-medium text-text-main dark:text-gray-300 mb-1.5" for="email">Email</label>
+<input class="block w-full rounded-lg border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 text-text-main dark:text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5 px-3" id="email" placeholder="nombre@empresa.com" type="email"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-main dark:text-gray-300 mb-1.5" for="phone">Teléfono</label>
+<input class="block w-full rounded-lg border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 text-text-main dark:text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5 px-3" id="phone" placeholder="+56 9 1234 5678" type="tel"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-main dark:text-gray-300 mb-1.5" for="region">Región de Despacho</label>
+<select class="block w-full rounded-lg border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 text-text-main dark:text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5 px-3" id="region">
+<option>Seleccione una región</option>
+<option>Región Metropolitana</option>
+<option>Valparaíso</option>
+<option>Biobío</option>
+<option>Araucanía</option>
+<option>Los Lagos</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-main dark:text-gray-300 mb-1.5" for="comments">Comentarios Adicionales</label>
+<textarea class="block w-full rounded-lg border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 text-text-main dark:text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5 px-3 resize-none" id="comments" placeholder="Necesito instalación, dudas sobre materiales, etc..." rows="3"></textarea>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-3.5 px-4 rounded-lg shadow-md transition-all duration-200 transform hover:-translate-y-0.5" type="submit">
+<span>Enviar Solicitud de Cotización</span>
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+<div class="pt-2 flex flex-col gap-2">
+<div class="flex items-center gap-2 text-xs text-text-secondary dark:text-gray-400">
+<span class="material-symbols-outlined text-green-600 text-[18px]">verified_user</span>
+<span>Tus datos están protegidos. No hacemos spam.</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-text-secondary dark:text-gray-400">
+<span class="material-symbols-outlined text-primary text-[18px]">schedule</span>
+<span>Recibe tu propuesta en menos de 24 horas hábiles.</span>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-gray-800 py-12 px-4 sm:px-6 lg:px-8 mt-12">
+<div class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-4 text-text-main dark:text-white">
+<div class="w-6 h-6">
+<svg class="text-primary w-full h-full" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="text-lg font-bold">Fibrarce</span>
+</div>
+<p class="text-sm text-text-secondary dark:text-gray-400">Soluciones en fibra de vidrio de alta calidad para industrias y hogares. Estanques, piscinas y proyectos a medida.</p>
+</div>
+<div>
+<h4 class="font-bold text-text-main dark:text-white mb-4">Productos</h4>
+<ul class="space-y-2 text-sm text-text-secondary dark:text-gray-400">
+<li><a class="hover:text-primary transition-colors" href="#">Estanques</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Piscinas</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Fosas Sépticas</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Revestimientos</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-text-main dark:text-white mb-4">Empresa</h4>
+<ul class="space-y-2 text-sm text-text-secondary dark:text-gray-400">
+<li><a class="hover:text-primary transition-colors" href="#">Sobre Nosotros</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Proyectos</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contacto</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-text-main dark:text-white mb-4">Contacto</h4>
+<ul class="space-y-2 text-sm text-text-secondary dark:text-gray-400">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">mail</span> contacto@fibrarce.cl</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">call</span> +56 2 2345 6789</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">location_on</span> Av. Industrial 1234, Santiago</li>
+</ul>
+</div>
+</div>
+<div class="max-w-[1280px] mx-auto mt-12 pt-8 border-t border-gray-100 dark:border-gray-800 text-center text-xs text-gray-400">
+            © 2024 Fibrarce. Todos los derechos reservados.
+        </div>
+</footer>
+</body></html>
