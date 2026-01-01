@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Fibrarce - Soluciones en Fibra de Vidrio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "primary-dark": "#0f66bd",
+                        "background-light": "#ffffff",
+                        "background-dark": "#101922",
+                        "slate-dark": "#1e293b",
+                        "slate-light": "#64748b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-dark dark:text-white antialiased overflow-x-hidden">
+
+    <!-- Navegacion -->
+    <nav class="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/95 backdrop-blur-md dark:border-gray-800 dark:bg-background-dark/95">
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-3">
+                <div class="flex size-10 items-center justify-center rounded-lg bg-primary text-white">
+                    <span class="material-symbols-outlined !text-[28px]">water_drop</span>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Fibrarce</span>
+            </div>
+            <div class="hidden md:flex flex-1 justify-center gap-8">
+                <a class="text-sm font-medium text-slate-600 hover:text-primary transition-colors dark:text-slate-300 dark:hover:text-white" href="#inicio">Inicio</a>
+                <a class="text-sm font-medium text-slate-600 hover:text-primary transition-colors dark:text-slate-300 dark:hover:text-white" href="#servicios">Servicios</a>
+                <a class="text-sm font-medium text-slate-600 hover:text-primary transition-colors dark:text-slate-300 dark:hover:text-white" href="#productos">Productos</a>
+                <a class="text-sm font-medium text-slate-600 hover:text-primary transition-colors dark:text-slate-300 dark:hover:text-white" href="#nosotros">Nosotros</a>
+                <a class="text-sm font-medium text-slate-600 hover:text-primary transition-colors dark:text-slate-300 dark:hover:text-white" href="#contacto">Contacto</a>
+            </div>
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#cotizacion" class="inline-flex h-10 items-center justify-center rounded-lg bg-primary px-6 text-sm font-semibold text-white transition-all hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Solicitar Cotizacion
+                </a>
+            </div>
+            <div class="flex md:hidden">
+                <button id="menu-toggle" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-slate-700 dark:text-white" type="button">
+                    <span class="sr-only">Abrir menu</span>
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+        <!-- Menu movil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-background-dark border-t border-gray-100 dark:border-gray-800">
+            <div class="px-4 py-4 space-y-3">
+                <a class="block text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300" href="#inicio">Inicio</a>
+                <a class="block text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300" href="#servicios">Servicios</a>
+                <a class="block text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300" href="#productos">Productos</a>
+                <a class="block text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300" href="#nosotros">Nosotros</a>
+                <a class="block text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300" href="#contacto">Contacto</a>
+                <a href="#cotizacion" class="block w-full text-center py-2 rounded-lg bg-primary text-white font-semibold">Cotizar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative">
+        <div class="relative flex min-h-[600px] flex-col justify-center overflow-hidden bg-slate-900">
+            <div class="absolute inset-0 z-0">
+                <div class="h-full w-full bg-cover bg-center bg-no-repeat opacity-60 mix-blend-overlay" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB39x8_-JbEpgW1S4H7ootMAELVNohZ4i2UqdR_why2yRd2pvzefYcvhrt_aToY0oboE0ood28GJGJjfAGdvFRA7r8sW5QbvKSmZrSZbSOD9b4RppRtv17mWmYcviBF9zQPv7b7StZiWXGTcTpfzM8K7P41hrwez0Xg8A6xuw_BTDJns0q_SwCqAcDawkRMYeiFJLA60pVPogXFHU4xBPE86gPshj_P16YP_AqK0jfV5Wv0PAvlLLG3-Rsm5_5OH6AjFD1ZTQojbXQ");'></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/50 to-transparent"></div>
+            </div>
+            <div class="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+                <div class="max-w-2xl">
+                    <div class="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-sm font-medium text-blue-300 backdrop-blur-sm mb-6">
+                        <span class="flex h-2 w-2 rounded-full bg-blue-400 mr-2 animate-pulse"></span>
+                        Lideres en Tecnologia de Fibra
+                    </div>
+                    <h1 class="text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl mb-6">
+                        Soluciones en Fibra de Vidrio de <span class="text-primary">Alta Resistencia</span>
+                    </h1>
+                    <p class="text-lg leading-8 text-gray-300 mb-8 max-w-xl">
+                        Fabricacion certificada de estanques industriales, piscinas y revestimientos. Durabilidad garantizada para proyectos exigentes B2B y residenciales.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#cotizacion" class="inline-flex h-12 items-center justify-center rounded-lg bg-primary px-8 text-base font-semibold text-white transition-all hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-lg shadow-blue-500/25">
+                            Cotizar Ahora
+                        </a>
+                        <a href="#productos" class="inline-flex h-12 items-center justify-center rounded-lg border border-white/20 bg-white/5 px-8 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50">
+                            Ver Catalogo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Empresas que confian -->
+    <section class="border-b border-gray-100 bg-white py-10 dark:border-gray-800 dark:bg-background-dark">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <p class="mb-6 text-center text-sm font-medium text-slate-500 dark:text-slate-400">Empresas que confian en nuestra calidad</p>
+            <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-8 opacity-60 grayscale transition-all hover:grayscale-0">
+                <div class="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2"><span class="material-symbols-outlined">factory</span> INDUTECH</div>
+                <div class="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2"><span class="material-symbols-outlined">water</span> AQUACORP</div>
+                <div class="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2"><span class="material-symbols-outlined">engineering</span> CONSTRUX</div>
+                <div class="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2"><span class="material-symbols-outlined">agriculture</span> AGROCHILE</div>
+                <div class="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2"><span class="material-symbols-outlined">science</span> BIOLABS</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="bg-slate-50 py-24 dark:bg-[#131f2b]">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="mb-16 text-center">
+                <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">Nuestros Servicios Integrales</h2>
+                <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">Calidad y soporte tecnico en cada etapa de su proyecto.</p>
+            </div>
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+                <div class="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm transition-all hover:shadow-md dark:bg-background-dark dark:border dark:border-gray-800">
+                    <div class="mb-6 inline-flex size-14 items-center justify-center rounded-xl bg-blue-50 text-primary dark:bg-blue-900/20">
+                        <span class="material-symbols-outlined text-3xl">straighten</span>
+                    </div>
+                    <h3 class="mb-3 text-xl font-bold text-slate-900 dark:text-white">Fabricacion a Medida</h3>
+                    <p class="mb-6 text-slate-600 dark:text-slate-400">Diseno y construccion de piezas especiales segun planos tecnicos y requerimientos especificos de la industria.</p>
+                    <a class="inline-flex items-center text-sm font-semibold text-primary hover:text-blue-700" href="#contacto">
+                        Saber mas <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm transition-all hover:shadow-md dark:bg-background-dark dark:border dark:border-gray-800">
+                    <div class="mb-6 inline-flex size-14 items-center justify-center rounded-xl bg-blue-50 text-primary dark:bg-blue-900/20">
+                        <span class="material-symbols-outlined text-3xl">propane_tank</span>
+                    </div>
+                    <h3 class="mb-3 text-xl font-bold text-slate-900 dark:text-white">Estanques Industriales</h3>
+                    <p class="mb-6 text-slate-600 dark:text-slate-400">Soluciones de almacenamiento quimico y de agua potable con resinas certificadas de alta durabilidad.</p>
+                    <a class="inline-flex items-center text-sm font-semibold text-primary hover:text-blue-700" href="#productos">
+                        Ver tipos de estanques <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm transition-all hover:shadow-md dark:bg-background-dark dark:border dark:border-gray-800">
+                    <div class="mb-6 inline-flex size-14 items-center justify-center rounded-xl bg-blue-50 text-primary dark:bg-blue-900/20">
+                        <span class="material-symbols-outlined text-3xl">pool</span>
+                    </div>
+                    <h3 class="mb-3 text-xl font-bold text-slate-900 dark:text-white">Piscinas & Proyectos</h3>
+                    <p class="mb-6 text-slate-600 dark:text-slate-400">Instalacion completa de piscinas residenciales y comerciales, incluyendo equipos de filtrado y climatizacion.</p>
+                    <a class="inline-flex items-center text-sm font-semibold text-primary hover:text-blue-700" href="#productos">
+                        Ver modelos <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section id="productos" class="py-24 bg-white dark:bg-background-dark">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Productos Destacados</h2>
+                    <p class="mt-2 text-slate-600 dark:text-slate-400">Soluciones listas para entrega e instalacion.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <a href="#cotizacion" class="inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition-all hover:bg-gray-50 hover:text-primary dark:border-gray-700 dark:bg-transparent dark:text-white dark:hover:bg-gray-800">
+                        Solicitar Cotizacion
+                    </a>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                <!-- Producto 1 -->
+                <div class="group relative bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="aspect-[4/3] w-full overflow-hidden bg-gray-100">
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA6HaPLfnKY7fvtzSFjZA6OSkU9RcU8QFUq9pH3VL1MomoZnBFIUcwPYJGMIPLeSVLUnga6Won04G_dPGsPX2_qmn3A06RLr-BGunrI0gU3oNn1axreYGWlGlXJ1y8lg-78GdixPD0tZTOBEhdfxID2bqaeJOAezqqQYz1N7Cz7JmCjXfnFIYHhqQmR2Wa7d27GNxS3cr6u_-uhVEc9iiEdGFuzEN4EFNaZPFmQdC8WvbXhkQvcgu2AxwaOem90pVbdvXlVaw154TE");'></div>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs font-semibold text-primary mb-1 block">Estanques Verticales</span>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Estanque Vertical 5000L</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">Uso industrial y riego</p>
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center text-sm font-medium text-green-600"><span class="w-2 h-2 rounded-full bg-green-500 mr-2"></span>Disponible</span>
+                            <a href="#cotizacion" class="text-primary hover:text-blue-700"><span class="material-symbols-outlined">add_shopping_cart</span></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Producto 2 -->
+                <div class="group relative bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="aspect-[4/3] w-full overflow-hidden bg-gray-100">
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC0bbD_si6DlMqk16pbqXqr4DuGXZ6ZboqAc--MqQ71sTbNQP72gGQaos5-aaz0whwO1Vu5D-ULSN-_LKJm6tANm43yXrIU8Z6XB_qGT_KTjw2rd8deLHfbO4npn3lqRDlPyZgZCkOe6UTpQ6C1CdpYSiR4jN2JAK4dqIXD3ERP9yheCKabqg7vvG49RaOom-0HRnftjqfnrMcNZgrCqQcXyVOC8cvW029z5Gqj4ktA8Ipl-7lBoJZL26NaM4pPeE8fLRhdG-WE_W0");'></div>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs font-semibold text-primary mb-1 block">Estanques Verticales</span>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Estanque Vertical 10.000L</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">Industrial de alta capacidad</p>
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center text-sm font-medium text-green-600"><span class="w-2 h-2 rounded-full bg-green-500 mr-2"></span>En Stock</span>
+                            <a href="#cotizacion" class="text-primary hover:text-blue-700"><span class="material-symbols-outlined">add_shopping_cart</span></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Producto 3 -->
+                <div class="group relative bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="aspect-[4/3] w-full overflow-hidden bg-gray-100">
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBz0qo4OcsfhMAluP1PDDDqDlfHTpaQh-obQrn8-3LfeykX7TVTKmqQrn4GXbVR46XLMBjhvRoRU2JdB322Io3I44YUraDlY32ePynDPIV9oEILQ1meZoz7xdvo2hSLNieafxst-OeasfQH3EUhK2HRsFyDxj02-OYjC1Vk7OWU6DkqoJo2IdzKXkNs4u_nVtds0MLXJEBcZtwjspueXu230lDQ3Lh6u2YD2CLXrsroaRD_CJ_e4WBLb8RZcomaBHqh2SEcs9OZ0No");'></div>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs font-semibold text-primary mb-1 block">Piscinas</span>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Piscina Rectangular 6x3m</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">Ideal para familias</p>
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center text-sm font-medium text-amber-600"><span class="w-2 h-2 rounded-full bg-amber-500 mr-2"></span>A pedido</span>
+                            <a href="#cotizacion" class="text-primary hover:text-blue-700"><span class="material-symbols-outlined">add_shopping_cart</span></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Producto 4 -->
+                <div class="group relative bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="aspect-[4/3] w-full overflow-hidden bg-gray-100">
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC8OH24hhMkA8MzyY2kUfDZz8edjRK8YGeOoe0koaWM8uI6H1okXR6d-mjSfpPV5ZUO4iRaq8SdU9HTUKbgXazPVwiRF9mvCqRAUkJI8OoxqVv_ML_H1iFuM_yUCysS09X1_y2GqhEfT2Utr0MYiAvsHnbT9pYMPjT2ZZdxoJdTBw6h68d9F9onlSNFnmbVOM_hxqp_jrfOrmgKXle1W_Yhb5XG6INg-wtAOlyuyF9IWtfrrzI3JA0SQPnkmgT-aC7LREwGQDrFGHk");'></div>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs font-semibold text-primary mb-1 block">Tratamiento de Aguas</span>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Fosa Septica 2500L</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">Certificada norma vigente</p>
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center text-sm font-medium text-green-600"><span class="w-2 h-2 rounded-full bg-green-500 mr-2"></span>Disponible</span>
+                            <a href="#cotizacion" class="text-primary hover:text-blue-700"><span class="material-symbols-outlined">add_shopping_cart</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por que elegirnos -->
+    <section id="nosotros" class="relative overflow-hidden bg-slate-900 py-24">
+        <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#3b82f6 1px, transparent 1px); background-size: 32px 32px;"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="grid gap-16 lg:grid-cols-2 lg:gap-24 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Por que elegir Fibrarce?</h2>
+                    <p class="mt-6 text-lg leading-8 text-gray-300">
+                        Mas de 15 anos de experiencia en la industria de polimeros reforzados. Nuestra tecnologia de aspersion y laminado manual garantiza productos libres de burbujas y maxima resistencia estructural.
+                    </p>
+                    <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-300 lg:max-w-none">
+                        <div class="relative pl-9">
+                            <dt class="inline font-semibold text-white">
+                                <span class="material-symbols-outlined absolute left-1 top-1 text-primary text-[20px]">verified</span>
+                                Certificacion ISO 9001
+                            </dt>
+                            <dd class="inline">. Procesos estandarizados que aseguran la misma calidad en cada pieza.</dd>
+                        </div>
+                        <div class="relative pl-9">
+                            <dt class="inline font-semibold text-white">
+                                <span class="material-symbols-outlined absolute left-1 top-1 text-primary text-[20px]">schedule</span>
+                                Entrega Puntual
+                            </dt>
+                            <dd class="inline">. Respetamos los cronogramas de su proyecto industrial o residencial.</dd>
+                        </div>
+                        <div class="relative pl-9">
+                            <dt class="inline font-semibold text-white">
+                                <span class="material-symbols-outlined absolute left-1 top-1 text-primary text-[20px]">eco</span>
+                                Materiales Duraderos
+                            </dt>
+                            <dd class="inline">. Resinas con filtro UV y resistencia a la corrosion quimica.</dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="relative">
+                    <div class="aspect-[4/3] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10 bg-slate-800">
+                        <div class="h-full w-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA5g9Ms00HRnfdPSxN8y_OMbKg7N2FoUypMT-n3hugnQK4oV-dNn-ncwg7w9kb4F7QhsdNUla58z-Eb-b5qlp4zNeMFotNTEW-gKVQWCl2NVhuDqWlxPYFiTvIC75cUOoNOeqwSNxMHBqOn3OBq_12b1p1EpskYanSO5Os42_KFqB9bbOErBScPm-vZLMKtP7q1g82SbQ86LCMedyYTBd0sP0F_T2I4UvjiImukbBO6RbP_1ECVx3MmoVcIV3dO8Q8ECP2G1yyfkD8");'></div>
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 rounded-xl bg-primary p-6 shadow-xl lg:bottom-10 lg:-left-12">
+                        <p class="flex items-baseline gap-x-2">
+                            <span class="text-4xl font-bold tracking-tight text-white">+1,200</span>
+                            <span class="text-sm font-semibold leading-6 text-blue-100">Proyectos</span>
+                        </p>
+                        <p class="mt-2 text-sm text-blue-100">Instalados exitosamente</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seccion de Cotizacion -->
+    <section id="cotizacion" class="bg-blue-50 py-16 dark:bg-[#0c131a]">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-gray-900/5 dark:bg-[#1a2633] dark:ring-gray-700">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="px-6 py-12 sm:px-12 lg:py-16">
+                        <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Listo para comenzar su proyecto?</h2>
+                        <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+                            Nuestro equipo de ingenieros y especialistas esta listo para asesorarlo. Obtenga una cotizacion detallada en menos de 24 horas.
+                        </p>
+                        <div class="mt-8 space-y-4">
+                            <div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+                                <span class="material-symbols-outlined text-primary">check_circle</span>
+                                <span>Cotizacion sin compromiso</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+                                <span class="material-symbols-outlined text-primary">check_circle</span>
+                                <span>Respuesta en 24 horas</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+                                <span class="material-symbols-outlined text-primary">check_circle</span>
+                                <span>Asesoria tecnica gratuita</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-6 py-12 sm:px-12 lg:px-16 lg:py-16 dark:bg-[#131f2b]">
+                        <form id="quote-form" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1" for="nombre">Nombre</label>
+                                    <input class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm dark:bg-slate-800 dark:ring-gray-600 dark:text-white" id="nombre" name="nombre" placeholder="Su nombre" type="text" required/>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1" for="telefono">Telefono</label>
+                                    <input class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm dark:bg-slate-800 dark:ring-gray-600 dark:text-white" id="telefono" name="telefono" placeholder="+56 9 1234 5678" type="tel"/>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1" for="email">Correo electronico</label>
+                                <input class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm dark:bg-slate-800 dark:ring-gray-600 dark:text-white" id="email" name="email" placeholder="nombre@empresa.com" type="email" required/>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1" for="producto">Producto de interes</label>
+                                <select class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm dark:bg-slate-800 dark:ring-gray-600 dark:text-white" id="producto" name="producto">
+                                    <option value="">Seleccione un producto</option>
+                                    <option value="estanque-vertical">Estanque Vertical</option>
+                                    <option value="estanque-horizontal">Estanque Horizontal</option>
+                                    <option value="piscina">Piscina de Fibra</option>
+                                    <option value="fosa-septica">Fosa Septica</option>
+                                    <option value="otro">Otro / Proyecto especial</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1" for="mensaje">Mensaje</label>
+                                <textarea class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm dark:bg-slate-800 dark:ring-gray-600 dark:text-white" id="mensaje" name="mensaje" placeholder="Describa su necesidad o proyecto..." rows="3"></textarea>
+                            </div>
+                            <button class="w-full rounded-md bg-primary px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors" type="submit">
+                                Enviar Solicitud de Cotizacion
+                            </button>
+                        </form>
+                        <!-- Mensaje de exito (oculto por defecto) -->
+                        <div id="success-message" class="hidden text-center py-8">
+                            <div class="rounded-full bg-green-100 dark:bg-green-900/20 p-4 inline-block mb-4">
+                                <span class="material-symbols-outlined text-green-600 dark:text-green-400 text-4xl">check_circle</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Solicitud Enviada!</h3>
+                            <p class="text-slate-600 dark:text-slate-300">Nos pondremos en contacto contigo pronto.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-24 bg-white dark:bg-background-dark">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">Contactanos</h2>
+                <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">Estamos aqui para ayudarte con tu proyecto</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <a href="tel:+56922345678" class="flex flex-col items-center p-8 rounded-2xl bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+                    <div class="mb-4 inline-flex size-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+                        <span class="material-symbols-outlined text-3xl">call</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Telefono</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-center">+56 2 2345 6789</p>
+                    <p class="text-slate-600 dark:text-slate-400 text-center">+56 9 8765 4321</p>
+                </a>
+                <a href="mailto:ventas@fibrarce.cl" class="flex flex-col items-center p-8 rounded-2xl bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+                    <div class="mb-4 inline-flex size-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+                        <span class="material-symbols-outlined text-3xl">mail</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Email</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-center">ventas@fibrarce.cl</p>
+                    <p class="text-slate-600 dark:text-slate-400 text-center">contacto@fibrarce.cl</p>
+                </a>
+                <div class="flex flex-col items-center p-8 rounded-2xl bg-slate-50 dark:bg-slate-800">
+                    <div class="mb-4 inline-flex size-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+                        <span class="material-symbols-outlined text-3xl">location_on</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Direccion</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-center">Av. Industrial 500</p>
+                    <p class="text-slate-600 dark:text-slate-400 text-center">Parque Empresarial Norte, Santiago</p>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <p class="text-slate-600 dark:text-slate-400">
+                    <span class="font-semibold">Horario de atencion:</span> Lunes a Viernes 9:00 - 18:00 | Sabado 9:00 - 13:00
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white">
+        <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="flex size-8 items-center justify-center rounded bg-primary text-white">
+                            <span class="material-symbols-outlined !text-[20px]">water_drop</span>
+                        </div>
+                        <span class="text-lg font-bold">Fibrarce</span>
+                    </div>
+                    <p class="text-sm leading-6 text-slate-400">
+                        Expertos en soluciones de fibra de vidrio para la industria y el hogar. Calidad que perdura.
+                    </p>
+                    <div class="mt-6 flex space-x-4">
+                        <a class="text-slate-400 hover:text-white transition-colors" href="#">
+                            <span class="sr-only">Facebook</span>
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                        <a class="text-slate-400 hover:text-white transition-colors" href="#">
+                            <span class="sr-only">Instagram</span>
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.468 2.465c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold leading-6 text-white">Productos</h3>
+                    <ul class="mt-4 space-y-3" role="list">
+                        <li><a class="text-sm leading-6 text-slate-400 hover:text-white transition-colors" href="#productos">Estanques Verticales</a></li>
+                        <li><a class="text-sm leading-6 text-slate-400 hover:text-white transition-colors" href="#productos">Estanques Horizontales</a></li>
+                        <li><a class="text-sm leading-6 text-slate-400 hover:text-white transition-colors" href="#productos">Piscinas Rectangulares</a></li>
+                        <li><a class="text-sm leading-6 text-slate-400 hover:text-white transition-colors" href="#productos">Fosas Septicas</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold leading-6 text-white">Compania</h3>
+                    <ul class="mt-4 space-y-3" role="list">
+                        <li><a class="text-sm leading-6 text-slate-400 hover:text-white transition-colors" href="#nosotros">Sobre Nosotros</a></li>
+                        <li><a class="text-sm leading-6 text-slate-400 hover:text-white transition-colors" href="#servicios">Servicios</a></li>
+                        <li><a class="text-sm leading-6 text-slate-400 hover:text-white transition-colors" href="#contacto">Contacto</a></li>
+                        <li><a class="text-sm leading-6 text-slate-400 hover:text-white transition-colors" href="#cotizacion">Cotizar</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold leading-6 text-white">Contacto</h3>
+                    <ul class="mt-4 space-y-3" role="list">
+                        <li class="flex items-start gap-2 text-sm leading-6 text-slate-400">
+                            <span class="material-symbols-outlined text-[18px] mt-0.5">location_on</span>
+                            Av. Industrial 500, Parque Empresarial Norte.
+                        </li>
+                        <li class="flex items-center gap-2 text-sm leading-6 text-slate-400">
+                            <span class="material-symbols-outlined text-[18px]">phone</span>
+                            +56 2 2345 6789
+                        </li>
+                        <li class="flex items-center gap-2 text-sm leading-6 text-slate-400">
+                            <span class="material-symbols-outlined text-[18px]">mail</span>
+                            ventas@fibrarce.cl
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-slate-700 pt-8">
+                <p class="text-xs leading-5 text-slate-500 text-center">2024 Fibrarce. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript para interactividad -->
+    <script>
+        // Toggle menu movil
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Cerrar menu al hacer clic en un enlace
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Formulario de cotizacion
+        document.getElementById('quote-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Ocultar formulario y mostrar mensaje de exito
+            this.classList.add('hidden');
+            document.getElementById('success-message').classList.remove('hidden');
+
+            // Resetear despues de 5 segundos
+            setTimeout(() => {
+                this.reset();
+                this.classList.remove('hidden');
+                document.getElementById('success-message').classList.add('hidden');
+            }, 5000);
+        });
+
+        // Efecto de scroll en navegacion
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
+            } else {
+                nav.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
+</html>
