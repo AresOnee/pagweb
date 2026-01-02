@@ -30,72 +30,58 @@
         html { scroll-behavior: smooth; }
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
         .filled { font-variation-settings: 'FILL' 1; }
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-bg-dark font-display text-white antialiased min-h-screen">
+<body class="bg-bg-dark font-display text-white antialiased">
 
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-surface/95 backdrop-blur-md border-b border-gray-700/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <a href="#/" onclick="navigateTo('home')" class="flex items-center gap-3 cursor-pointer">
+                <a href="#" onclick="showView('home')" class="flex items-center gap-3 cursor-pointer">
                     <div class="flex size-9 items-center justify-center rounded-lg bg-primary text-white">
                         <span class="material-symbols-outlined">water_drop</span>
                     </div>
                     <span class="text-xl font-bold text-white">Fibrarce</span>
                 </a>
 
-                <!-- Navigation -->
                 <nav class="hidden md:flex items-center gap-8">
-                    <a onclick="navigateTo('home')" class="text-sm font-medium text-gray-300 hover:text-white transition-colors cursor-pointer">Inicio</a>
-                    <a onclick="navigateTo('catalogo')" class="text-sm font-medium text-gray-300 hover:text-white transition-colors cursor-pointer">Catálogo</a>
-                    <a onclick="navigateTo('nosotros')" class="text-sm font-medium text-gray-300 hover:text-white transition-colors cursor-pointer">Nosotros</a>
-                    <a onclick="navigateTo('contacto')" class="text-sm font-medium text-gray-300 hover:text-white transition-colors cursor-pointer">Contacto</a>
+                    <a href="#inicio" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Inicio</a>
+                    <a href="#" onclick="showView('catalogo')" class="text-sm font-medium text-gray-300 hover:text-white transition-colors cursor-pointer">Catálogo</a>
+                    <a href="#nosotros" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Nosotros</a>
+                    <a href="#contacto" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Contacto</a>
                 </nav>
 
-                <!-- Actions -->
                 <div class="flex items-center gap-4">
-                    <!-- Dark mode toggle -->
-                    <button onclick="toggleDarkMode()" class="p-2 text-gray-400 hover:text-white transition-colors">
+                    <button onclick="toggleTheme()" class="p-2 text-gray-400 hover:text-white transition-colors">
                         <span class="material-symbols-outlined" id="theme-icon">light_mode</span>
                     </button>
-
-                    <!-- Cart button -->
-                    <button onclick="navigateTo('cotizacion')" class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors">
+                    <button onclick="showView('cotizacion')" class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors">
                         <span class="material-symbols-outlined text-[20px]">description</span>
                         <span>Cotización</span>
-                        <span id="cart-count" class="bg-white text-primary text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+                        <span id="cart-badge" class="bg-white text-primary text-xs font-bold px-2 py-0.5 rounded-full">0</span>
                     </button>
-
-                    <!-- Mobile menu -->
-                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-gray-400">
+                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden p-2 text-gray-400">
                         <span class="material-symbols-outlined">menu</span>
                     </button>
                 </div>
             </div>
         </div>
-
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-gray-700">
-            <div class="px-4 py-4 space-y-3">
-                <a onclick="navigateTo('home'); toggleMobileMenu()" class="block text-sm font-medium text-gray-300 hover:text-white cursor-pointer">Inicio</a>
-                <a onclick="navigateTo('catalogo'); toggleMobileMenu()" class="block text-sm font-medium text-gray-300 hover:text-white cursor-pointer">Catálogo</a>
-                <a onclick="navigateTo('nosotros'); toggleMobileMenu()" class="block text-sm font-medium text-gray-300 hover:text-white cursor-pointer">Nosotros</a>
-                <a onclick="navigateTo('contacto'); toggleMobileMenu()" class="block text-sm font-medium text-gray-300 hover:text-white cursor-pointer">Contacto</a>
-            </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-gray-700 px-4 py-4 space-y-3">
+            <a href="#inicio" class="block text-sm font-medium text-gray-300">Inicio</a>
+            <a href="#" onclick="showView('catalogo')" class="block text-sm font-medium text-gray-300">Catálogo</a>
+            <a href="#nosotros" class="block text-sm font-medium text-gray-300">Nosotros</a>
+            <a href="#contacto" class="block text-sm font-medium text-gray-300">Contacto</a>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main id="app" class="min-h-screen">
-        <!-- Content will be rendered here by JavaScript -->
+    <main id="main-content">
+        <!-- Se renderiza dinámicamente -->
     </main>
 
     <!-- Footer -->
-    <footer class="bg-surface border-t border-gray-700/50 mt-16">
+    <footer class="bg-surface border-t border-gray-700/50">
         <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
@@ -105,12 +91,13 @@
                         </div>
                         <span class="text-lg font-bold">Fibrarce</span>
                     </div>
-                    <p class="text-sm text-gray-400">Expertos en soluciones de fibra de vidrio para la industria y el hogar.</p>
+                    <p class="text-sm text-gray-400">Expertos en soluciones de fibra de vidrio para la industria y el hogar. Calidad que perdura.</p>
                 </div>
                 <div>
                     <h3 class="text-sm font-semibold mb-4">Productos</h3>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-white">Estanques</a></li>
+                        <li><a href="#" class="hover:text-white">Estanques Verticales</a></li>
+                        <li><a href="#" class="hover:text-white">Estanques Horizontales</a></li>
                         <li><a href="#" class="hover:text-white">Piscinas</a></li>
                         <li><a href="#" class="hover:text-white">Fosas Sépticas</a></li>
                     </ul>
@@ -118,15 +105,16 @@
                 <div>
                     <h3 class="text-sm font-semibold mb-4">Empresa</h3>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-white">Nosotros</a></li>
-                        <li><a href="#" class="hover:text-white">Contacto</a></li>
+                        <li><a href="#nosotros" class="hover:text-white">Nosotros</a></li>
+                        <li><a href="#contacto" class="hover:text-white">Contacto</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-sm font-semibold mb-4">Contacto</h3>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li>+56 2 2345 6789</li>
-                        <li>ventas@fibrarce.cl</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">location_on</span> Av. Industrial 500, Santiago</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">phone</span> +56 2 2345 6789</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">mail</span> ventas@fibrarce.cl</li>
                     </ul>
                 </div>
             </div>
@@ -138,7 +126,7 @@
 
     <script>
         // =====================
-        // DATA - Productos
+        // DATA
         // =====================
         const productos = [
             {
@@ -156,13 +144,7 @@
                     "https://lh3.googleusercontent.com/aida-public/AB6AXuBHL2N0pm7-27BE-Wv91fkwdOrO8C7f2k53ieJqjkOFiOiCQPnN35r7YFFub_mjcTor--jbmPu6zUMK6uYFd5kAQfD3cQUV6mP_TQ85PssLmczgcgDSpgOpvm8JmMgQQqmFfKQNarID87IiBeXg7dmoZxJBrkKamHnnWSyj3EjJYAkyFa3a4rY5zZNOTyrROGddIIHaCOACKuaoHbsCAzsLBHcOqhnuVBg20bSAdfVAoyaTPtBDiNxtcRtiJqnHDoZid55OyzEL2ko"
                 ],
                 resenas: 12,
-                specs: {
-                    capacidad: "10.000 Litros",
-                    altura: "2.850 mm",
-                    diametro: "2.200 mm",
-                    espesor: "8 - 10 mm (Reforzado)",
-                    material: "Fibra de Vidrio (PRFV) con recubrimiento Gelcoat ISO NPG"
-                },
+                specs: { capacidad: "10.000 Litros", altura: "2.850 mm", diametro: "2.200 mm", espesor: "8 - 10 mm (Reforzado)", material: "Fibra de Vidrio (PRFV) con Gelcoat ISO NPG" },
                 caracteristicas: [
                     { icon: "wb_sunny", title: "Protección UV Avanzada", desc: "Recubrimiento externo con inhibidor UV para evitar envejecimiento prematuro." },
                     { icon: "health_and_safety", title: "Grado Alimenticio", desc: "Interior liso y antibacteriano apto para agua potable según normas vigentes." },
@@ -178,17 +160,9 @@
                 estado: "Disponible",
                 estadoColor: "green",
                 imagen: "https://lh3.googleusercontent.com/aida-public/AB6AXuDSBulKAIoxhExzFQ04zHnyFiXwS0GvEcJNCPC9d7VF_S5uBBo6d68C1yO71vmd_lL5CwD4JxU5_UXmZGXr98VQE9qSUCgaQJVzEiX3iUPUdLRQOD3rcqaYFnM5l4hQMAiKy-oHxzTyElZQg9PLYPjTHGalAzWMJrlxkX1aEPJK13mn1slILb4QhucgcjD9SfzYS8CCLRKQKTQCNK7R7eT5cu6cDpSs-BIWoKMfFnBkhMONPE64sWxUiZX0ZNQ9gLv3lQMXBD5ezuA",
-                imagenes: [
-                    "https://lh3.googleusercontent.com/aida-public/AB6AXuDSBulKAIoxhExzFQ04zHnyFiXwS0GvEcJNCPC9d7VF_S5uBBo6d68C1yO71vmd_lL5CwD4JxU5_UXmZGXr98VQE9qSUCgaQJVzEiX3iUPUdLRQOD3rcqaYFnM5l4hQMAiKy-oHxzTyElZQg9PLYPjTHGalAzWMJrlxkX1aEPJK13mn1slILb4QhucgcjD9SfzYS8CCLRKQKTQCNK7R7eT5cu6cDpSs-BIWoKMfFnBkhMONPE64sWxUiZX0ZNQ9gLv3lQMXBD5ezuA"
-                ],
+                imagenes: ["https://lh3.googleusercontent.com/aida-public/AB6AXuDSBulKAIoxhExzFQ04zHnyFiXwS0GvEcJNCPC9d7VF_S5uBBo6d68C1yO71vmd_lL5CwD4JxU5_UXmZGXr98VQE9qSUCgaQJVzEiX3iUPUdLRQOD3rcqaYFnM5l4hQMAiKy-oHxzTyElZQg9PLYPjTHGalAzWMJrlxkX1aEPJK13mn1slILb4QhucgcjD9SfzYS8CCLRKQKTQCNK7R7eT5cu6cDpSs-BIWoKMfFnBkhMONPE64sWxUiZX0ZNQ9gLv3lQMXBD5ezuA"],
                 resenas: 8,
-                specs: {
-                    capacidad: "5.000 Litros",
-                    largo: "2.500 mm",
-                    diametro: "1.800 mm",
-                    espesor: "6 - 8 mm",
-                    material: "Fibra de Vidrio (PRFV)"
-                },
+                specs: { capacidad: "5.000 Litros", largo: "2.500 mm", diametro: "1.800 mm", espesor: "6 - 8 mm", material: "Fibra de Vidrio (PRFV)" },
                 caracteristicas: [
                     { icon: "wb_sunny", title: "Protección UV", desc: "Resistente a rayos solares." },
                     { icon: "settings", title: "Fácil Instalación", desc: "Diseño compacto para espacios reducidos." },
@@ -204,20 +178,12 @@
                 estado: "A pedido",
                 estadoColor: "amber",
                 imagen: "https://lh3.googleusercontent.com/aida-public/AB6AXuBz0qo4OcsfhMAluP1PDDDqDlfHTpaQh-obQrn8-3LfeykX7TVTKmqQrn4GXbVR46XLMBjhvRoRU2JdB322Io3I44YUraDlY32ePynDPIV9oEILQ1meZoz7xdvo2hSLNieafxst-OeasfQH3EUhK2HRsFyDxj02-OYjC1Vk7OWU6DkqoJo2IdzKXkNs4u_nVtds0MLXJEBcZtwjspueXu230lDQ3Lh6u2YD2CLXrsroaRD_CJ_e4WBLb8RZcomaBHqh2SEcs9OZ0No",
-                imagenes: [
-                    "https://lh3.googleusercontent.com/aida-public/AB6AXuBz0qo4OcsfhMAluP1PDDDqDlfHTpaQh-obQrn8-3LfeykX7TVTKmqQrn4GXbVR46XLMBjhvRoRU2JdB322Io3I44YUraDlY32ePynDPIV9oEILQ1meZoz7xdvo2hSLNieafxst-OeasfQH3EUhK2HRsFyDxj02-OYjC1Vk7OWU6DkqoJo2IdzKXkNs4u_nVtds0MLXJEBcZtwjspueXu230lDQ3Lh6u2YD2CLXrsroaRD_CJ_e4WBLb8RZcomaBHqh2SEcs9OZ0No"
-                ],
+                imagenes: ["https://lh3.googleusercontent.com/aida-public/AB6AXuBz0qo4OcsfhMAluP1PDDDqDlfHTpaQh-obQrn8-3LfeykX7TVTKmqQrn4GXbVR46XLMBjhvRoRU2JdB322Io3I44YUraDlY32ePynDPIV9oEILQ1meZoz7xdvo2hSLNieafxst-OeasfQH3EUhK2HRsFyDxj02-OYjC1Vk7OWU6DkqoJo2IdzKXkNs4u_nVtds0MLXJEBcZtwjspueXu230lDQ3Lh6u2YD2CLXrsroaRD_CJ_e4WBLb8RZcomaBHqh2SEcs9OZ0No"],
                 resenas: 15,
-                specs: {
-                    dimensiones: "6.0m x 3.0m x 1.4m",
-                    capacidad: "25.200 Litros",
-                    profundidad: "1.40 m",
-                    espesor: "8 mm",
-                    material: "Fibra de Vidrio con Gelcoat Premium"
-                },
+                specs: { dimensiones: "6.0m x 3.0m x 1.4m", capacidad: "25.200 Litros", profundidad: "1.40 m", espesor: "8 mm", material: "Fibra de Vidrio con Gelcoat Premium" },
                 caracteristicas: [
                     { icon: "pool", title: "Acabado Premium", desc: "Superficie lisa antideslizante." },
-                    { icon: "palette", title: "Color Duradero", desc: "Gelcoat resistente a químicos del agua." },
+                    { icon: "palette", title: "Color Duradero", desc: "Gelcoat resistente a químicos." },
                     { icon: "handyman", title: "Kit Incluido", desc: "Incluye skimmer y retornos." }
                 ]
             },
@@ -230,21 +196,13 @@
                 estado: "Disponible",
                 estadoColor: "green",
                 imagen: "https://lh3.googleusercontent.com/aida-public/AB6AXuC8OH24hhMkA8MzyY2kUfDZz8edjRK8YGeOoe0koaWM8uI6H1okXR6d-mjSfpPV5ZUO4iRaq8SdU9HTUKbgXazPVwiRF9mvCqRAUkJI8OoxqVv_ML_H1iFuM_yUCysS09X1_y2GqhEfT2Utr0MYiAvsHnbT9pYMPjT2ZZdxoJdTBw6h68d9F9onlSNFnmbVOM_hxqp_jrfOrmgKXle1W_Yhb5XG6INg-wtAOlyuyF9IWtfrrzI3JA0SQPnkmgT-aC7LREwGQDrFGHk",
-                imagenes: [
-                    "https://lh3.googleusercontent.com/aida-public/AB6AXuC8OH24hhMkA8MzyY2kUfDZz8edjRK8YGeOoe0koaWM8uI6H1okXR6d-mjSfpPV5ZUO4iRaq8SdU9HTUKbgXazPVwiRF9mvCqRAUkJI8OoxqVv_ML_H1iFuM_yUCysS09X1_y2GqhEfT2Utr0MYiAvsHnbT9pYMPjT2ZZdxoJdTBw6h68d9F9onlSNFnmbVOM_hxqp_jrfOrmgKXle1W_Yhb5XG6INg-wtAOlyuyF9IWtfrrzI3JA0SQPnkmgT-aC7LREwGQDrFGHk"
-                ],
+                imagenes: ["https://lh3.googleusercontent.com/aida-public/AB6AXuC8OH24hhMkA8MzyY2kUfDZz8edjRK8YGeOoe0koaWM8uI6H1okXR6d-mjSfpPV5ZUO4iRaq8SdU9HTUKbgXazPVwiRF9mvCqRAUkJI8OoxqVv_ML_H1iFuM_yUCysS09X1_y2GqhEfT2Utr0MYiAvsHnbT9pYMPjT2ZZdxoJdTBw6h68d9F9onlSNFnmbVOM_hxqp_jrfOrmgKXle1W_Yhb5XG6INg-wtAOlyuyF9IWtfrrzI3JA0SQPnkmgT-aC7LREwGQDrFGHk"],
                 resenas: 6,
-                specs: {
-                    capacidad: "2.500 Litros",
-                    altura: "1.800 mm",
-                    diametro: "1.500 mm",
-                    espesor: "8 mm",
-                    material: "Fibra de Vidrio certificada"
-                },
+                specs: { capacidad: "2.500 Litros", altura: "1.800 mm", diametro: "1.500 mm", espesor: "8 mm", material: "Fibra de Vidrio certificada" },
                 caracteristicas: [
-                    { icon: "verified", title: "Certificada", desc: "Cumple normativa sanitaria vigente." },
-                    { icon: "eco", title: "Ecológica", desc: "Tratamiento eficiente de aguas." },
-                    { icon: "timer", title: "Larga Vida", desc: "Durabilidad superior a 30 años." }
+                    { icon: "verified", title: "Certificada", desc: "Cumple normativa sanitaria." },
+                    { icon: "eco", title: "Ecológica", desc: "Tratamiento eficiente." },
+                    { icon: "timer", title: "Larga Vida", desc: "Más de 30 años." }
                 ]
             },
             {
@@ -252,21 +210,13 @@
                 nombre: "Estanque Vertical 5.000L",
                 categoria: "estanques",
                 descripcion: "Uso doméstico • riego • agua potable",
-                descripcionLarga: "Estanque vertical compacto ideal para uso doméstico y pequeñas industrias. Perfecto para almacenamiento de agua potable y sistemas de riego.",
+                descripcionLarga: "Estanque vertical compacto ideal para uso doméstico y pequeñas industrias.",
                 estado: "En Stock",
                 estadoColor: "green",
                 imagen: "https://lh3.googleusercontent.com/aida-public/AB6AXuA6HaPLfnKY7fvtzSFjZA6OSkU9RcU8QFUq9pH3VL1MomoZnBFIUcwPYJGMIPLeSVLUnga6Won04G_dPGsPX2_qmn3A06RLr-BGunrI0gU3oNn1axreYGWlGlXJ1y8lg-78GdixPD0tZTOBEhdfxID2bqaeJOAezqqQYz1N7Cz7JmCjXfnFIYHhqQmR2Wa7d27GNxS3cr6u_-uhVEc9iiEdGFuzEN4EFNaZPFmQdC8WvbXhkQvcgu2AxwaOem90pVbdvXlVaw154TE",
-                imagenes: [
-                    "https://lh3.googleusercontent.com/aida-public/AB6AXuA6HaPLfnKY7fvtzSFjZA6OSkU9RcU8QFUq9pH3VL1MomoZnBFIUcwPYJGMIPLeSVLUnga6Won04G_dPGsPX2_qmn3A06RLr-BGunrI0gU3oNn1axreYGWlGlXJ1y8lg-78GdixPD0tZTOBEhdfxID2bqaeJOAezqqQYz1N7Cz7JmCjXfnFIYHhqQmR2Wa7d27GNxS3cr6u_-uhVEc9iiEdGFuzEN4EFNaZPFmQdC8WvbXhkQvcgu2AxwaOem90pVbdvXlVaw154TE"
-                ],
+                imagenes: ["https://lh3.googleusercontent.com/aida-public/AB6AXuA6HaPLfnKY7fvtzSFjZA6OSkU9RcU8QFUq9pH3VL1MomoZnBFIUcwPYJGMIPLeSVLUnga6Won04G_dPGsPX2_qmn3A06RLr-BGunrI0gU3oNn1axreYGWlGlXJ1y8lg-78GdixPD0tZTOBEhdfxID2bqaeJOAezqqQYz1N7Cz7JmCjXfnFIYHhqQmR2Wa7d27GNxS3cr6u_-uhVEc9iiEdGFuzEN4EFNaZPFmQdC8WvbXhkQvcgu2AxwaOem90pVbdvXlVaw154TE"],
                 resenas: 10,
-                specs: {
-                    capacidad: "5.000 Litros",
-                    altura: "2.200 mm",
-                    diametro: "1.800 mm",
-                    espesor: "6 - 8 mm",
-                    material: "Fibra de Vidrio (PRFV)"
-                },
+                specs: { capacidad: "5.000 Litros", altura: "2.200 mm", diametro: "1.800 mm", espesor: "6 - 8 mm", material: "Fibra de Vidrio (PRFV)" },
                 caracteristicas: [
                     { icon: "wb_sunny", title: "Protección UV", desc: "Resistente a rayos solares." },
                     { icon: "health_and_safety", title: "Grado Alimenticio", desc: "Apto para agua potable." },
@@ -278,21 +228,13 @@
                 nombre: "Fosa Séptica 3.200L",
                 categoria: "fosas",
                 descripcion: "Alta capacidad • Uso comercial",
-                descripcionLarga: "Fosa séptica de alta capacidad para uso comercial y residencial de mayor demanda. Sistema de tratamiento eficiente.",
+                descripcionLarga: "Fosa séptica de alta capacidad para uso comercial y residencial de mayor demanda.",
                 estado: "Disponible",
                 estadoColor: "green",
                 imagen: "https://lh3.googleusercontent.com/aida-public/AB6AXuAJ2Qx4y8BUt_UU8xGlbk7VKQ72bIZT1g95-XVZzYBEDkDZ05HMy9fadAoLvSXogfxQk4xOxCVSu1ysEJ51I98ugIetsjv3wlrbynva5SzH3SITm8t9PSLgkQ3mTbqD-5UU1Du-bROQzSOM4OfJlenVc586Bvi6EGWifb0RlsECtMbFxCvzu-xMfwMuBvMYcF_KT5Na33Oc5jKbyB1EhD711neBzfeKapBehfUtm8xZM9HZPDi0nZdJ9X6f22maUAjygKG61o7e2fQ",
-                imagenes: [
-                    "https://lh3.googleusercontent.com/aida-public/AB6AXuAJ2Qx4y8BUt_UU8xGlbk7VKQ72bIZT1g95-XVZzYBEDkDZ05HMy9fadAoLvSXogfxQk4xOxCVSu1ysEJ51I98ugIetsjv3wlrbynva5SzH3SITm8t9PSLgkQ3mTbqD-5UU1Du-bROQzSOM4OfJlenVc586Bvi6EGWifb0RlsECtMbFxCvzu-xMfwMuBvMYcF_KT5Na33Oc5jKbyB1EhD711neBzfeKapBehfUtm8xZM9HZPDi0nZdJ9X6f22maUAjygKG61o7e2fQ"
-                ],
+                imagenes: ["https://lh3.googleusercontent.com/aida-public/AB6AXuAJ2Qx4y8BUt_UU8xGlbk7VKQ72bIZT1g95-XVZzYBEDkDZ05HMy9fadAoLvSXogfxQk4xOxCVSu1ysEJ51I98ugIetsjv3wlrbynva5SzH3SITm8t9PSLgkQ3mTbqD-5UU1Du-bROQzSOM4OfJlenVc586Bvi6EGWifb0RlsECtMbFxCvzu-xMfwMuBvMYcF_KT5Na33Oc5jKbyB1EhD711neBzfeKapBehfUtm8xZM9HZPDi0nZdJ9X6f22maUAjygKG61o7e2fQ"],
                 resenas: 4,
-                specs: {
-                    capacidad: "3.200 Litros",
-                    altura: "2.000 mm",
-                    diametro: "1.600 mm",
-                    espesor: "10 mm",
-                    material: "Fibra de Vidrio reforzada"
-                },
+                specs: { capacidad: "3.200 Litros", altura: "2.000 mm", diametro: "1.600 mm", espesor: "10 mm", material: "Fibra de Vidrio reforzada" },
                 caracteristicas: [
                     { icon: "verified", title: "Certificada", desc: "Cumple normativa sanitaria." },
                     { icon: "groups", title: "Alta Capacidad", desc: "Ideal para uso comercial." },
@@ -312,9 +254,9 @@
         let selectedImageIndex = 0;
 
         // =====================
-        // ROUTER
+        // FUNCTIONS
         // =====================
-        function navigateTo(view, productId = null) {
+        function showView(view, productId = null) {
             currentView = view;
             currentProductId = productId;
             selectedImageIndex = 0;
@@ -322,21 +264,19 @@
             window.scrollTo(0, 0);
         }
 
-        // =====================
-        // CART FUNCTIONS
-        // =====================
         function addToCart(productId) {
             const product = productos.find(p => p.id === productId);
             if (product && !cart.find(p => p.id === productId)) {
                 cart.push({ ...product, cantidad: 1 });
-                updateCartCount();
+                updateCartBadge();
                 showToast(`${product.nombre} agregado a cotización`);
             }
+            render();
         }
 
         function removeFromCart(productId) {
             cart = cart.filter(p => p.id !== productId);
-            updateCartCount();
+            updateCartBadge();
             render();
         }
 
@@ -348,110 +288,211 @@
             }
         }
 
-        function updateCartCount() {
-            document.getElementById('cart-count').textContent = cart.length;
+        function updateCartBadge() {
+            document.getElementById('cart-badge').textContent = cart.length;
         }
 
         function showToast(message) {
             const toast = document.createElement('div');
-            toast.className = 'fixed bottom-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-pulse';
+            toast.className = 'fixed bottom-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50';
             toast.textContent = message;
             document.body.appendChild(toast);
             setTimeout(() => toast.remove(), 2000);
         }
 
-        // =====================
-        // UI FUNCTIONS
-        // =====================
-        function toggleMobileMenu() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        }
-
-        function toggleDarkMode() {
+        function toggleTheme() {
             document.documentElement.classList.toggle('dark');
-            const icon = document.getElementById('theme-icon');
-            icon.textContent = document.documentElement.classList.contains('dark') ? 'light_mode' : 'dark_mode';
+            document.getElementById('theme-icon').textContent = document.documentElement.classList.contains('dark') ? 'light_mode' : 'dark_mode';
         }
 
-        function setCategory(cat) {
-            currentCategory = cat;
-            render();
-        }
-
-        function setSearch(query) {
-            searchQuery = query.toLowerCase();
-            render();
-        }
-
-        function selectImage(index) {
-            selectedImageIndex = index;
-            render();
-        }
+        function setCategory(cat) { currentCategory = cat; render(); }
+        function setSearch(query) { searchQuery = query.toLowerCase(); render(); }
+        function selectImage(index) { selectedImageIndex = index; render(); }
 
         // =====================
-        // RENDER FUNCTIONS
+        // RENDER
         // =====================
         function render() {
-            const app = document.getElementById('app');
-
+            const main = document.getElementById('main-content');
             switch(currentView) {
-                case 'home':
-                    app.innerHTML = renderHome();
-                    break;
-                case 'catalogo':
-                    app.innerHTML = renderCatalogo();
-                    break;
-                case 'producto':
-                    app.innerHTML = renderProducto();
-                    break;
-                case 'cotizacion':
-                    app.innerHTML = renderCotizacion();
-                    break;
-                case 'nosotros':
-                    app.innerHTML = renderNosotros();
-                    break;
-                case 'contacto':
-                    app.innerHTML = renderContacto();
-                    break;
-                default:
-                    app.innerHTML = renderHome();
+                case 'home': main.innerHTML = renderHome(); break;
+                case 'catalogo': main.innerHTML = renderCatalogo(); break;
+                case 'producto': main.innerHTML = renderProducto(); break;
+                case 'cotizacion': main.innerHTML = renderCotizacion(); break;
+                default: main.innerHTML = renderHome();
             }
         }
 
         function renderHome() {
             return `
                 <!-- Hero -->
-                <section class="relative bg-gradient-to-br from-surface to-bg-dark">
-                    <div class="max-w-7xl mx-auto px-4 py-20 sm:px-6 lg:px-8">
-                        <div class="text-center">
-                            <h1 class="text-4xl md:text-6xl font-black mb-6">
-                                Soluciones en <span class="text-primary">Fibra de Vidrio</span>
-                            </h1>
-                            <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-                                Fabricación certificada de estanques, piscinas y fosas sépticas. Calidad garantizada para proyectos industriales y residenciales.
-                            </p>
-                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                                <button onclick="navigateTo('catalogo')" class="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors">
-                                    Ver Catálogo
-                                </button>
-                                <button onclick="navigateTo('contacto')" class="border border-gray-600 hover:border-gray-400 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors">
-                                    Contactar
-                                </button>
+                <section id="inicio" class="relative">
+                    <div class="relative min-h-[600px] flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB39x8_-JbEpgW1S4H7ootMAELVNohZ4i2UqdR_why2yRd2pvzefYcvhrt_aToY0oboE0ood28GJGJjfAGdvFRA7r8sW5QbvKSmZrSZbSOD9b4RppRtv17mWmYcviBF9zQPv7b7StZiWXGTcTpfzM8K7P41hrwez0Xg8A6xuw_BTDJns0q_SwCqAcDawkRMYeiFJLA60pVPogXFHU4xBPE86gPshj_P16YP_AqK0jfV5Wv0PAvlLLG3-Rsm5_5OH6AjFD1ZTQojbXQ');"></div>
+                        <div class="relative z-10 max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
+                            <div class="max-w-2xl">
+                                <div class="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm font-medium text-blue-300 mb-6">
+                                    <span class="w-2 h-2 rounded-full bg-blue-400 mr-2 animate-pulse"></span>
+                                    Líderes en Tecnología de Fibra
+                                </div>
+                                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+                                    Soluciones en Fibra de Vidrio de <span class="text-primary">Alta Resistencia</span>
+                                </h1>
+                                <p class="text-lg text-gray-300 mb-8 max-w-xl">
+                                    Fabricación certificada de estanques industriales, piscinas y revestimientos. Durabilidad garantizada para proyectos exigentes.
+                                </p>
+                                <div class="flex flex-col sm:flex-row gap-4">
+                                    <button onclick="showView('cotizacion')" class="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors shadow-lg">
+                                        Cotizar Ahora
+                                    </button>
+                                    <button onclick="showView('catalogo')" class="border border-white/20 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors">
+                                        Ver Catálogo
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Productos destacados -->
-                <section class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-                    <div class="flex justify-between items-center mb-8">
-                        <h2 class="text-2xl font-bold">Productos Destacados</h2>
-                        <button onclick="navigateTo('catalogo')" class="text-primary hover:text-blue-400 font-semibold flex items-center gap-1">
-                            Ver todos <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
-                        </button>
+                <!-- Empresas -->
+                <section class="bg-surface py-10 border-b border-gray-700/50">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <p class="text-center text-sm text-gray-500 mb-6">Empresas que confían en nuestra calidad</p>
+                        <div class="flex flex-wrap justify-center gap-8 opacity-60">
+                            <div class="text-xl font-bold flex items-center gap-2"><span class="material-symbols-outlined">factory</span> INDUTECH</div>
+                            <div class="text-xl font-bold flex items-center gap-2"><span class="material-symbols-outlined">water</span> AQUACORP</div>
+                            <div class="text-xl font-bold flex items-center gap-2"><span class="material-symbols-outlined">engineering</span> CONSTRUX</div>
+                            <div class="text-xl font-bold flex items-center gap-2"><span class="material-symbols-outlined">agriculture</span> AGROCHILE</div>
+                        </div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        ${productos.slice(0, 3).map(p => renderProductCard(p)).join('')}
+                </section>
+
+                <!-- Servicios -->
+                <section class="py-20 bg-surface-light">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center mb-16">
+                            <h2 class="text-3xl sm:text-4xl font-bold mb-4">Nuestros Servicios Integrales</h2>
+                            <p class="text-gray-400 text-lg">Calidad y soporte técnico en cada etapa de su proyecto.</p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="bg-surface p-8 rounded-2xl border border-gray-700 hover:border-gray-600 transition-colors">
+                                <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                                    <span class="material-symbols-outlined text-primary text-3xl">straighten</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">Fabricación a Medida</h3>
+                                <p class="text-gray-400 mb-4">Diseño y construcción de piezas especiales según planos técnicos y requerimientos específicos.</p>
+                                <a href="#contacto" class="text-primary font-semibold text-sm flex items-center gap-1">Saber más <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                            </div>
+                            <div class="bg-surface p-8 rounded-2xl border border-gray-700 hover:border-gray-600 transition-colors">
+                                <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                                    <span class="material-symbols-outlined text-primary text-3xl">propane_tank</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">Estanques Industriales</h3>
+                                <p class="text-gray-400 mb-4">Soluciones de almacenamiento químico y de agua potable con resinas certificadas.</p>
+                                <a onclick="showView('catalogo')" class="text-primary font-semibold text-sm flex items-center gap-1 cursor-pointer">Ver estanques <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                            </div>
+                            <div class="bg-surface p-8 rounded-2xl border border-gray-700 hover:border-gray-600 transition-colors">
+                                <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                                    <span class="material-symbols-outlined text-primary text-3xl">pool</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">Piscinas & Proyectos</h3>
+                                <p class="text-gray-400 mb-4">Instalación completa de piscinas residenciales y comerciales con equipos incluidos.</p>
+                                <a onclick="showView('catalogo')" class="text-primary font-semibold text-sm flex items-center gap-1 cursor-pointer">Ver piscinas <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Productos Destacados -->
+                <section class="py-20 bg-bg-dark">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-12">
+                            <div>
+                                <h2 class="text-3xl font-bold mb-2">Productos Destacados</h2>
+                                <p class="text-gray-400">Soluciones listas para entrega e instalación.</p>
+                            </div>
+                            <button onclick="showView('catalogo')" class="mt-4 md:mt-0 text-primary font-semibold flex items-center gap-1">
+                                Ver catálogo completo <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            ${productos.slice(0, 4).map(p => renderProductCard(p)).join('')}
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Por qué elegirnos -->
+                <section id="nosotros" class="py-20 bg-gradient-to-br from-slate-900 to-slate-800 relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#3b82f6 1px, transparent 1px); background-size: 32px 32px;"></div>
+                    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="grid lg:grid-cols-2 gap-16 items-center">
+                            <div>
+                                <h2 class="text-3xl sm:text-4xl font-bold mb-6">¿Por qué elegir Fibrarce?</h2>
+                                <p class="text-gray-300 text-lg mb-8">
+                                    Más de 15 años de experiencia en la industria de polímeros reforzados. Nuestra tecnología garantiza productos de máxima resistencia.
+                                </p>
+                                <div class="space-y-6">
+                                    <div class="flex gap-4">
+                                        <span class="material-symbols-outlined text-primary">verified</span>
+                                        <div><strong>Certificación ISO 9001</strong><span class="text-gray-400"> - Procesos estandarizados de calidad.</span></div>
+                                    </div>
+                                    <div class="flex gap-4">
+                                        <span class="material-symbols-outlined text-primary">schedule</span>
+                                        <div><strong>Entrega Puntual</strong><span class="text-gray-400"> - Respetamos los cronogramas.</span></div>
+                                    </div>
+                                    <div class="flex gap-4">
+                                        <span class="material-symbols-outlined text-primary">eco</span>
+                                        <div><strong>Materiales Duraderos</strong><span class="text-gray-400"> - Resinas con filtro UV.</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5g9Ms00HRnfdPSxN8y_OMbKg7N2FoUypMT-n3hugnQK4oV-dNn-ncwg7w9kb4F7QhsdNUla58z-Eb-b5qlp4zNeMFotNTEW-gKVQWCl2NVhuDqWlxPYFiTvIC75cUOoNOeqwSNxMHBqOn3OBq_12b1p1EpskYanSO5Os42_KFqB9bbOErBScPm-vZLMKtP7q1g82SbQ86LCMedyYTBd0sP0F_T2I4UvjiImukbBO6RbP_1ECVx3MmoVcIV3dO8Q8ECP2G1yyfkD8" alt="Fábrica" class="w-full h-full object-cover">
+                                </div>
+                                <div class="absolute -bottom-6 -left-6 bg-primary p-6 rounded-xl shadow-xl">
+                                    <p class="text-4xl font-bold">+1,200</p>
+                                    <p class="text-blue-100">Proyectos instalados</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contacto -->
+                <section id="contacto" class="py-20 bg-surface-light">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="bg-surface rounded-3xl overflow-hidden shadow-xl border border-gray-700">
+                            <div class="grid lg:grid-cols-2">
+                                <div class="p-8 lg:p-12">
+                                    <h2 class="text-3xl font-bold mb-4">¿Listo para comenzar su proyecto?</h2>
+                                    <p class="text-gray-400 mb-8">Nuestro equipo está listo para asesorarlo. Obtenga una cotización en menos de 24 horas.</p>
+                                    <div class="space-y-4">
+                                        <div class="flex items-center gap-3 text-gray-300"><span class="material-symbols-outlined text-primary">check_circle</span> Cotización sin compromiso</div>
+                                        <div class="flex items-center gap-3 text-gray-300"><span class="material-symbols-outlined text-primary">check_circle</span> Respuesta en 24 horas</div>
+                                        <div class="flex items-center gap-3 text-gray-300"><span class="material-symbols-outlined text-primary">check_circle</span> Asesoría técnica gratuita</div>
+                                    </div>
+                                    <div class="mt-8 space-y-4">
+                                        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">call</span> +56 2 2345 6789</div>
+                                        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">mail</span> ventas@fibrarce.cl</div>
+                                        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">location_on</span> Av. Industrial 500, Santiago</div>
+                                    </div>
+                                </div>
+                                <div class="bg-bg-dark p-8 lg:p-12">
+                                    <form onsubmit="event.preventDefault(); showToast('Mensaje enviado correctamente');" class="space-y-4">
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <input type="text" placeholder="Nombre" required class="col-span-2 sm:col-span-1 px-4 py-3 bg-surface border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-primary">
+                                            <input type="email" placeholder="Email" required class="col-span-2 sm:col-span-1 px-4 py-3 bg-surface border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-primary">
+                                        </div>
+                                        <input type="tel" placeholder="Teléfono" class="w-full px-4 py-3 bg-surface border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-primary">
+                                        <textarea placeholder="Mensaje" rows="4" class="w-full px-4 py-3 bg-surface border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-primary resize-none"></textarea>
+                                        <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white py-3 rounded-lg font-bold transition-colors">
+                                            Enviar Mensaje
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
             `;
@@ -459,33 +500,19 @@
 
         function renderCatalogo() {
             let filtered = productos;
-
-            if (currentCategory !== 'todos') {
-                filtered = filtered.filter(p => p.categoria === currentCategory);
-            }
-
-            if (searchQuery) {
-                filtered = filtered.filter(p =>
-                    p.nombre.toLowerCase().includes(searchQuery) ||
-                    p.descripcion.toLowerCase().includes(searchQuery)
-                );
-            }
+            if (currentCategory !== 'todos') filtered = filtered.filter(p => p.categoria === currentCategory);
+            if (searchQuery) filtered = filtered.filter(p => p.nombre.toLowerCase().includes(searchQuery) || p.descripcion.toLowerCase().includes(searchQuery));
 
             return `
                 <div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-                    <!-- Header -->
                     <div class="mb-8">
                         <h1 class="text-3xl font-bold mb-2">Catálogo de Productos</h1>
                         <p class="text-gray-400">Explora estanques, piscinas y soluciones en fibra de vidrio. Agrega productos a tu cotización en un clic.</p>
                     </div>
-
-                    <!-- Filters -->
                     <div class="flex flex-col md:flex-row gap-4 mb-8">
                         <div class="relative flex-1">
                             <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
-                            <input type="text" placeholder="Buscar (ej: 10.000L, piscina, fosa...)"
-                                onkeyup="setSearch(this.value)"
-                                class="w-full pl-10 pr-4 py-3 bg-surface border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary">
+                            <input type="text" placeholder="Buscar (ej: 10.000L, piscina, fosa...)" onkeyup="setSearch(this.value)" class="w-full pl-10 pr-4 py-3 bg-surface border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-primary">
                         </div>
                         <select onchange="setCategory(this.value)" class="px-4 py-3 bg-surface border border-gray-700 rounded-lg text-white focus:border-primary">
                             <option value="todos" ${currentCategory === 'todos' ? 'selected' : ''}>Todos</option>
@@ -494,20 +521,13 @@
                             <option value="fosas" ${currentCategory === 'fosas' ? 'selected' : ''}>Fosas Sépticas</option>
                         </select>
                     </div>
-
-                    <!-- Results count -->
                     <div class="flex justify-between items-center mb-6">
                         <p class="text-gray-400">Mostrando <span class="text-primary font-bold">${filtered.length}</span> productos</p>
-                        <button onclick="navigateTo('cotizacion')" class="text-primary hover:text-blue-400 font-semibold flex items-center gap-1">
-                            Ir a cotización <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
-                        </button>
+                        <button onclick="showView('cotizacion')" class="text-primary font-semibold flex items-center gap-1">Ir a cotización <span class="material-symbols-outlined text-[20px]">arrow_forward</span></button>
                     </div>
-
-                    <!-- Products grid -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         ${filtered.map(p => renderProductCard(p)).join('')}
                     </div>
-
                     ${filtered.length === 0 ? '<p class="text-center text-gray-500 py-12">No se encontraron productos</p>' : ''}
                 </div>
             `;
@@ -517,28 +537,22 @@
             const inCart = cart.find(p => p.id === product.id);
             return `
                 <div class="bg-surface rounded-xl overflow-hidden border border-gray-700/50 hover:border-gray-600 transition-all group">
-                    <div class="aspect-[4/3] relative overflow-hidden cursor-pointer" onclick="navigateTo('producto', '${product.id}')">
+                    <div class="aspect-[4/3] relative overflow-hidden cursor-pointer" onclick="showView('producto', '${product.id}')">
                         <img src="${product.imagen}" alt="${product.nombre}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-5">
                         <h3 class="font-bold text-lg mb-1">${product.nombre}</h3>
                         <p class="text-gray-400 text-sm mb-3">${product.descripcion}</p>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-between mb-4">
                             <span class="inline-flex items-center text-sm font-medium text-${product.estadoColor}-500">
-                                <span class="w-2 h-2 rounded-full bg-${product.estadoColor}-500 mr-2"></span>
-                                ${product.estado}
+                                <span class="w-2 h-2 rounded-full bg-${product.estadoColor}-500 mr-2"></span>${product.estado}
                             </span>
                         </div>
-                        <div class="flex gap-2 mt-4">
-                            <button onclick="event.stopPropagation(); addToCart('${product.id}')"
-                                class="${inCart ? 'bg-green-600' : 'bg-primary hover:bg-primary-dark'} text-white px-4 py-2 rounded-lg font-semibold text-sm flex items-center gap-2 flex-1 justify-center transition-colors">
-                                <span class="material-symbols-outlined text-[18px]">${inCart ? 'check' : 'add_shopping_cart'}</span>
-                                ${inCart ? 'Agregado' : 'Agregar'}
+                        <div class="flex gap-2">
+                            <button onclick="event.stopPropagation(); addToCart('${product.id}')" class="${inCart ? 'bg-green-600' : 'bg-primary hover:bg-primary-dark'} text-white px-4 py-2 rounded-lg font-semibold text-sm flex items-center gap-2 flex-1 justify-center transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">${inCart ? 'check' : 'add_shopping_cart'}</span>${inCart ? 'Agregado' : 'Agregar'}
                             </button>
-                            <button onclick="navigateTo('producto', '${product.id}')"
-                                class="border border-gray-600 hover:border-gray-400 text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors">
-                                Ver detalle
-                            </button>
+                            <button onclick="showView('producto', '${product.id}')" class="border border-gray-600 hover:border-gray-400 text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors">Ver detalle</button>
                         </div>
                     </div>
                 </div>
@@ -548,69 +562,52 @@
         function renderProducto() {
             const product = productos.find(p => p.id === currentProductId);
             if (!product) return '<p class="text-center py-20">Producto no encontrado</p>';
-
             const inCart = cart.find(p => p.id === product.id);
             const currentImage = product.imagenes[selectedImageIndex] || product.imagen;
 
             return `
                 <div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-                    <!-- Breadcrumbs -->
                     <nav class="flex items-center gap-2 text-sm text-gray-400 mb-6">
-                        <a onclick="navigateTo('home')" class="hover:text-white cursor-pointer">Inicio</a>
+                        <a onclick="showView('home')" class="hover:text-white cursor-pointer">Inicio</a>
                         <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-                        <a onclick="navigateTo('catalogo')" class="hover:text-white cursor-pointer">Catálogo</a>
+                        <a onclick="showView('catalogo')" class="hover:text-white cursor-pointer">Catálogo</a>
                         <span class="material-symbols-outlined text-[16px]">chevron_right</span>
                         <span class="text-white">${product.nombre}</span>
                     </nav>
-
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                        <!-- Gallery -->
                         <div>
                             <div class="relative aspect-square bg-surface rounded-xl overflow-hidden mb-4">
-                                <span class="absolute top-4 left-4 bg-${product.estadoColor}-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">
-                                    ${product.estado}
-                                </span>
+                                <span class="absolute top-4 left-4 bg-${product.estadoColor}-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">${product.estado}</span>
                                 <img src="${currentImage}" alt="${product.nombre}" class="w-full h-full object-cover">
                             </div>
                             <div class="flex gap-3">
                                 ${product.imagenes.map((img, i) => `
-                                    <button onclick="selectImage(${i})"
-                                        class="w-20 h-20 rounded-lg overflow-hidden border-2 ${i === selectedImageIndex ? 'border-primary' : 'border-gray-700'} transition-colors">
+                                    <button onclick="selectImage(${i})" class="w-20 h-20 rounded-lg overflow-hidden border-2 ${i === selectedImageIndex ? 'border-primary' : 'border-gray-700'} transition-colors">
                                         <img src="${img}" alt="" class="w-full h-full object-cover">
                                     </button>
                                 `).join('')}
                             </div>
                         </div>
-
-                        <!-- Info -->
                         <div>
                             <span class="inline-flex items-center text-sm font-medium text-${product.estadoColor}-500 mb-2">
-                                <span class="w-2 h-2 rounded-full bg-${product.estadoColor}-500 mr-2"></span>
-                                ${product.estado}
+                                <span class="w-2 h-2 rounded-full bg-${product.estadoColor}-500 mr-2"></span>${product.estado}
                             </span>
                             <h1 class="text-3xl font-bold mb-2">${product.nombre}</h1>
                             <div class="flex items-center gap-4 text-sm text-gray-400 mb-4">
                                 <span>SKU: ${product.id}</span>
                                 <span>•</span>
                                 <div class="flex items-center gap-1">
-                                    ${[1,2,3,4,5].map(i => `<span class="material-symbols-outlined text-yellow-500 text-[16px] filled">star</span>`).join('')}
+                                    ${[1,2,3,4,5].map(() => `<span class="material-symbols-outlined text-yellow-500 text-[16px] filled">star</span>`).join('')}
                                     <span>(${product.resenas} reseñas)</span>
                                 </div>
                             </div>
                             <p class="text-gray-300 mb-6">${product.descripcionLarga}</p>
-
                             <div class="flex gap-4 mb-6">
-                                <button onclick="addToCart('${product.id}')"
-                                    class="${inCart ? 'bg-green-600' : 'bg-primary hover:bg-primary-dark'} text-white px-6 py-3 rounded-lg font-bold flex items-center gap-2 transition-colors">
-                                    <span class="material-symbols-outlined">${inCart ? 'check' : 'add_shopping_cart'}</span>
-                                    ${inCart ? 'Agregado a Cotización' : 'Agregar a Cotización'}
+                                <button onclick="addToCart('${product.id}')" class="${inCart ? 'bg-green-600' : 'bg-primary hover:bg-primary-dark'} text-white px-6 py-3 rounded-lg font-bold flex items-center gap-2 transition-colors">
+                                    <span class="material-symbols-outlined">${inCart ? 'check' : 'add_shopping_cart'}</span>${inCart ? 'Agregado a Cotización' : 'Agregar a Cotización'}
                                 </button>
-                                <button onclick="navigateTo('cotizacion')"
-                                    class="border border-gray-600 hover:border-gray-400 text-white px-6 py-3 rounded-lg font-bold transition-colors">
-                                    Ver Cotización
-                                </button>
+                                <button onclick="showView('cotizacion')" class="border border-gray-600 hover:border-gray-400 text-white px-6 py-3 rounded-lg font-bold transition-colors">Ver Cotización</button>
                             </div>
-
                             <div class="bg-surface-light rounded-xl p-5 border border-gray-700">
                                 <div class="flex items-start gap-3">
                                     <span class="material-symbols-outlined text-primary">verified_user</span>
@@ -622,8 +619,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Tabs -->
                     <div class="mt-12 bg-surface rounded-xl border border-gray-700 overflow-hidden">
                         <div class="border-b border-gray-700">
                             <button class="px-6 py-4 text-primary border-b-2 border-primary font-semibold">Especificaciones Técnicas</button>
@@ -632,38 +627,21 @@
                         </div>
                         <div class="p-6 md:p-8">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <!-- Specs Table -->
                                 <div>
-                                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-                                        <span class="material-symbols-outlined text-primary">straighten</span>
-                                        Dimensiones y Capacidad
-                                    </h3>
+                                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-primary">straighten</span> Dimensiones y Capacidad</h3>
                                     <table class="w-full">
                                         <tbody class="divide-y divide-gray-700">
-                                            ${Object.entries(product.specs).map(([key, value]) => `
-                                                <tr>
-                                                    <td class="py-3 text-gray-400 capitalize">${key.replace(/([A-Z])/g, ' $1')}</td>
-                                                    <td class="py-3 font-semibold text-right">${value}</td>
-                                                </tr>
-                                            `).join('')}
+                                            ${Object.entries(product.specs).map(([key, value]) => `<tr><td class="py-3 text-gray-400 capitalize">${key}</td><td class="py-3 font-semibold text-right">${value}</td></tr>`).join('')}
                                         </tbody>
                                     </table>
                                 </div>
-
-                                <!-- Features -->
                                 <div>
-                                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-                                        <span class="material-symbols-outlined text-primary">fact_check</span>
-                                        Características Destacadas
-                                    </h3>
+                                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-primary">fact_check</span> Características Destacadas</h3>
                                     <div class="space-y-4">
                                         ${product.caracteristicas.map(c => `
                                             <div class="flex gap-4 p-4 bg-surface-light rounded-lg">
                                                 <span class="material-symbols-outlined text-primary">${c.icon}</span>
-                                                <div>
-                                                    <h4 class="font-semibold">${c.title}</h4>
-                                                    <p class="text-sm text-gray-400">${c.desc}</p>
-                                                </div>
+                                                <div><h4 class="font-semibold">${c.title}</h4><p class="text-sm text-gray-400">${c.desc}</p></div>
                                             </div>
                                         `).join('')}
                                     </div>
@@ -680,18 +658,14 @@
                 <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
                     <h1 class="text-3xl font-bold mb-2">Solicitud de Cotización</h1>
                     <p class="text-gray-400 mb-8">Revisa tus productos y completa el formulario para recibir tu cotización.</p>
-
                     ${cart.length === 0 ? `
                         <div class="text-center py-16 bg-surface rounded-xl border border-gray-700">
                             <span class="material-symbols-outlined text-6xl text-gray-600 mb-4">shopping_cart</span>
                             <h3 class="text-xl font-semibold mb-2">Tu cotización está vacía</h3>
                             <p class="text-gray-400 mb-6">Agrega productos desde el catálogo</p>
-                            <button onclick="navigateTo('catalogo')" class="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-semibold">
-                                Ver Catálogo
-                            </button>
+                            <button onclick="showView('catalogo')" class="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-semibold">Ver Catálogo</button>
                         </div>
                     ` : `
-                        <!-- Cart items -->
                         <div class="space-y-4 mb-8">
                             <h2 class="font-semibold text-lg">Productos (${cart.length})</h2>
                             ${cart.map(item => `
@@ -706,19 +680,15 @@
                                                 <span class="px-3 py-1">${item.cantidad}</span>
                                                 <button onclick="updateQuantity('${item.id}', 1)" class="px-3 py-1 text-gray-400 hover:text-white">+</button>
                                             </div>
-                                            <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-400">
-                                                <span class="material-symbols-outlined">delete</span>
-                                            </button>
+                                            <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-400"><span class="material-symbols-outlined">delete</span></button>
                                         </div>
                                     </div>
                                 </div>
                             `).join('')}
                         </div>
-
-                        <!-- Contact form -->
                         <div class="bg-surface rounded-xl p-6 border border-gray-700">
                             <h2 class="font-semibold text-lg mb-4">Datos de Contacto</h2>
-                            <form onsubmit="event.preventDefault(); showToast('Cotización enviada correctamente'); cart=[]; updateCartCount(); navigateTo('home');" class="space-y-4">
+                            <form onsubmit="event.preventDefault(); showToast('Cotización enviada correctamente'); cart=[]; updateCartBadge(); showView('home');" class="space-y-4">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <input type="text" placeholder="Nombre completo" required class="px-4 py-3 bg-bg-dark border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-primary">
                                     <input type="text" placeholder="Empresa (opcional)" class="px-4 py-3 bg-bg-dark border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-primary">
@@ -729,82 +699,11 @@
                                 </div>
                                 <textarea placeholder="Comentarios adicionales" rows="3" class="w-full px-4 py-3 bg-bg-dark border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-primary"></textarea>
                                 <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white py-4 rounded-lg font-bold flex items-center justify-center gap-2">
-                                    <span class="material-symbols-outlined">send</span>
-                                    Enviar Solicitud de Cotización
+                                    <span class="material-symbols-outlined">send</span> Enviar Solicitud de Cotización
                                 </button>
                             </form>
                         </div>
                     `}
-                </div>
-            `;
-        }
-
-        function renderNosotros() {
-            return `
-                <div class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h1 class="text-4xl font-bold mb-4">Sobre Fibrarce</h1>
-                        <p class="text-xl text-gray-400 max-w-2xl mx-auto">Más de 15 años de experiencia en fabricación de productos de fibra de vidrio de alta calidad.</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="bg-surface p-8 rounded-xl border border-gray-700 text-center">
-                            <span class="material-symbols-outlined text-5xl text-primary mb-4">verified</span>
-                            <h3 class="text-xl font-bold mb-2">Certificación ISO</h3>
-                            <p class="text-gray-400">Procesos certificados que garantizan calidad constante.</p>
-                        </div>
-                        <div class="bg-surface p-8 rounded-xl border border-gray-700 text-center">
-                            <span class="material-symbols-outlined text-5xl text-primary mb-4">groups</span>
-                            <h3 class="text-xl font-bold mb-2">+1,200 Proyectos</h3>
-                            <p class="text-gray-400">Clientes satisfechos en todo Chile.</p>
-                        </div>
-                        <div class="bg-surface p-8 rounded-xl border border-gray-700 text-center">
-                            <span class="material-symbols-outlined text-5xl text-primary mb-4">schedule</span>
-                            <h3 class="text-xl font-bold mb-2">Entrega Puntual</h3>
-                            <p class="text-gray-400">Cumplimos con los plazos acordados.</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderContacto() {
-            return `
-                <div class="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h1 class="text-4xl font-bold mb-4">Contáctanos</h1>
-                        <p class="text-xl text-gray-400">Estamos listos para ayudarte con tu proyecto.</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                        <div class="bg-surface p-6 rounded-xl border border-gray-700 text-center">
-                            <span class="material-symbols-outlined text-3xl text-primary mb-3">call</span>
-                            <h3 class="font-bold mb-1">Teléfono</h3>
-                            <p class="text-gray-400">+56 2 2345 6789</p>
-                        </div>
-                        <div class="bg-surface p-6 rounded-xl border border-gray-700 text-center">
-                            <span class="material-symbols-outlined text-3xl text-primary mb-3">mail</span>
-                            <h3 class="font-bold mb-1">Email</h3>
-                            <p class="text-gray-400">ventas@fibrarce.cl</p>
-                        </div>
-                        <div class="bg-surface p-6 rounded-xl border border-gray-700 text-center">
-                            <span class="material-symbols-outlined text-3xl text-primary mb-3">location_on</span>
-                            <h3 class="font-bold mb-1">Dirección</h3>
-                            <p class="text-gray-400">Av. Industrial 500, Santiago</p>
-                        </div>
-                    </div>
-                    <div class="bg-surface rounded-xl p-8 border border-gray-700">
-                        <h2 class="text-xl font-bold mb-6">Envíanos un mensaje</h2>
-                        <form onsubmit="event.preventDefault(); showToast('Mensaje enviado correctamente');" class="space-y-4">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <input type="text" placeholder="Nombre" required class="px-4 py-3 bg-bg-dark border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-primary">
-                                <input type="email" placeholder="Email" required class="px-4 py-3 bg-bg-dark border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-primary">
-                            </div>
-                            <input type="text" placeholder="Asunto" class="w-full px-4 py-3 bg-bg-dark border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-primary">
-                            <textarea placeholder="Mensaje" rows="4" required class="w-full px-4 py-3 bg-bg-dark border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-primary"></textarea>
-                            <button type="submit" class="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-bold">
-                                Enviar Mensaje
-                            </button>
-                        </form>
-                    </div>
                 </div>
             `;
         }
